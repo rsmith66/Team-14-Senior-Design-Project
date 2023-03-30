@@ -196,13 +196,14 @@ public class CreateHolds : MonoBehaviour
         }
         int currentHold = 0;    //running total for number of hold being analyzed
         List<GameObject> activeHolds = new List<GameObject>();
+        int numColumns = holdData.GetLength(1);
         for (int m = 0; m < numRows; m++)
         {
-            for (int n = 0; n < j; n++)
+            for (int n = 0; n < numColumns; n++)
             {
                 if((oldHolds[m, n] == 1 && holdData[m, n] == 1))    //If hold is still pressed
                 {
-                    Debug.Log("Button is still pressed");   //Do nothing
+                    //Debug.Log("Button is still pressed");   //Do nothing
                 }
                 else if (holdData[m, n] == 1) //If a hold is pressed
                 {
@@ -214,7 +215,7 @@ public class CreateHolds : MonoBehaviour
                     }
                     else   //If hold is the same as pattern
                     {
-                        Debug.Log("Correct!");
+                        //Debug.Log("Correct!");
                         SpriteRenderer holdSprite = holds[currentHold].GetComponent<SpriteRenderer>();  //Turn hold color of pattern
                         holdSprite.color = rightColors[numRight];
                         if (oldHolds[m, n] == 0 && holdData[m, n] == 1)  //If statement to make sure this is only updated once
