@@ -22,8 +22,21 @@ The code for Missile Launch uses the same method as Simon to calibrate with the 
 
 ### Multiplexing Code
 
-### Reading from Sensor Data File Code
-
 ## Connecting the Modules
 
 ## Installing and Starting Software
+Overall, for fully installing the game on the raspberry pi and connecting it to the hardware, you first need to install the necessary proxy server to run the game on the pi and then get the game to read the multiplexing data. Then, once all that is completed, begin running the gendata.py multiplexing python file that writes to the text file and begin playing the game.
+### Running the game on the Raspberry Pi
+Unfortunately, the raspeberry pi OS has a lot of trouble running Unity games. To get around this, what we did was build the game as a WebGL game and then run the game on a proxy server for Chromium.
+1. Build Unity Game as WebGL
+2. Transfer Game to Raspberry Pi using SSH or USB
+3. Install NGINX onto Raspberry Pi using command "sudo apt install nginx"
+4. Open editor in default NGINX server using "sudo vim /etc/nginx/sites-enabled/default"
+5. Change the line "root /var/www/html;" to "root ${game-directory};"
+6. Start NGINX using "sudo /etc/init.d/nginx start"
+7. Play game by typing "http://localhost/" into Chromium browser
+
+### Getting Game to read Multiplexing File
+Now that the game is on the raspberry pi, you need to download some extensions to have the game read from the file on the pi. Since the game is being hosted on a proxy server, it cannot access the local files of the pi. Thus, we need to create a web server to host the file that is being updated. To get the data from this file, we also need to download an extension that adds a CORS Header to every request being made as this will bypass the warning that the browser will create when trying to read a file from another website.
+1. Download the web server extension and start by giving it access to file that the multiplexing is writing to: https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb
+2. Download the CORS Extension and enable it: https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en
