@@ -22,6 +22,8 @@ The code for Missile Launch uses the same method as Simon to calibrate with the 
 
 ### Multiplexing Code
 
+A standard setup uses 4 GPIO pins and 16:1 multiplexers. However, the code can be easily modified to use a different number of either by setting the constants at the top to different values, as well as setting different select/GPIO pin numbers. The program iteratively populates a file with the most recently collected hold data, one multiplexer index at a time, doing every GPIO pin within that index at the same time. The data file populated will be a space separated matrix of dimension GxM, where G is the number of GPIO pins and M is the number of possible selections on the multiplexers, with each data value corresponding to the GPIO pin/multiplexer index in its row/column.
+
 ## Connecting the Modules
 
 ## Installing and Starting Software
