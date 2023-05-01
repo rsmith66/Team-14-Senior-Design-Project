@@ -26,7 +26,7 @@ A standard setup uses 4 GPIO pins and 16:1 multiplexers. However, the code can b
 
 ## Connecting the Modules
 
-## Installing and Starting Software
+### Installing and Starting Software
 Overall, for fully installing the game on the raspberry pi and connecting it to the hardware, you first need to install the necessary proxy server to run the game on the pi and then get the game to read the multiplexing data. Then, once all that is completed, begin running the gendata.py multiplexing python file that writes to the text file and begin playing the game.
 ### Running the game on the Raspberry Pi
 Unfortunately, the raspeberry pi OS has a lot of trouble running Unity games. To get around this, what we did was build the game as a WebGL game and then run the game on a proxy server for Chromium.
